@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
+import ThemeProvider from '../ThemeProvider';
 import Header from '../Header';
 import './base.css';
 import 'sanitize.css';
@@ -14,6 +15,9 @@ const PageLayout = props => {
     margin: 0 auto;
     padding: 0 1rem 1.4rem;
     max-width: 960px;
+
+    /* Transition all the things! */
+    transition: all 0.3s;
 
     main {
       font-size: 1rem;
@@ -34,13 +38,13 @@ const PageLayout = props => {
   `);
 
   return (
-    <>
+    <ThemeProvider>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div css={style}>
         <main>{children}</main>
         <footer>&copy; {new Date().getFullYear()} Ben Junya</footer>
       </div>
-    </>
+    </ThemeProvider>
   );
 };
 

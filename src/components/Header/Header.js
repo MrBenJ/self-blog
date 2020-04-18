@@ -1,39 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
-const style = css`
-  background-color: turquoise;
-  margin-bottom: 1.4rem;
+import { ThemeContext } from '../ThemeProvider';
 
-  .header-content {
-    margin: 0 auto;
-    max-width: 960px;
-    padding: 1.4rem 1rem;
-  }
+const Header = ({ siteTitle }) => {
+  const { currentTheme } = useContext(ThemeContext);
 
-  h1 {
-    margin: 0;
-  }
+  const style = css`
+    background-color: ${currentTheme.colors.primary.main};
+    margin-bottom: 1.4rem;
 
-  .link {
-    color: white;
-    text-decorataion: none;
-  }
-`;
+    .header-content {
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 1.4rem 1rem;
+    }
 
-const Header = ({ siteTitle }) => (
-  <header css={style}>
-    <div className="header-content">
-      <h1 style={{ margin: 0 }}>
-        <Link className="link" to="/">
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-);
+    h1 {
+      margin: 0;
+    }
+
+    .link {
+      color: ${currentTheme.colors.static.white};
+      text-decorataion: none;
+    }
+  `;
+
+  return (
+    <header css={style}>
+      <div className="header-content">
+        <h1 style={{ margin: 0 }}>
+          <Link className="link" to="/">
+            {siteTitle}
+          </Link>
+        </h1>
+      </div>
+    </header>
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string
