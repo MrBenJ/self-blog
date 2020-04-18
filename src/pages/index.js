@@ -1,12 +1,12 @@
 import React from 'react';
 // import { Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import PageLayout from '../components/Layouts/PageLayout';
 // import Image from '../components/image';
 import SEO from '../components/seo';
 
 const IndexPage = () => (
-  <Layout>
+  <PageLayout>
     <SEO title="Home" />
     <h1>Hi! I&apos;m Ben!</h1>
     <h3>
@@ -17,7 +17,7 @@ const IndexPage = () => (
     <p></p>
 
     {/* <Link to="/page-2/">Go to page 2</Link> */}
-  </Layout>
+  </PageLayout>
 );
 
 export default IndexPage;
