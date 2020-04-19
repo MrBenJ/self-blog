@@ -29,6 +29,11 @@ const ThemeProvider = ({ children }) => {
   const { currentTheme } = value;
 
   const style = css`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
     h1 {
       color: ${currentTheme.typography.header.color};
       font-size: ${currentTheme.typography.header.size};
@@ -47,7 +52,9 @@ const ThemeProvider = ({ children }) => {
   `;
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>
+      <div css={style}>{children}</div>
+    </ThemeContext.Provider>
   );
 };
 

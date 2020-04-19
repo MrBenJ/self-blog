@@ -29,7 +29,7 @@ const Header = ({ siteMetadata }) => {
 
     .link {
       color: ${currentTheme.colors.static.white};
-      text-decorataion: none;
+      text-decoration: none;
     }
   `;
 
