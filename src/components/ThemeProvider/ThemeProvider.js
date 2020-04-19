@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import { css } from '@emotion/core';
 import MainTheme from './theme';
 import LightTheme from './LightTheme';
 
@@ -24,6 +25,26 @@ const ThemeProvider = ({ children }) => {
     setTheme,
     available: true
   };
+
+  const { currentTheme } = value;
+
+  const style = css`
+    h1 {
+      color: ${currentTheme.typography.header.color};
+      font-size: ${currentTheme.typography.header.size};
+    }
+
+    h2 {
+      color: ${currentTheme.typography.subhead.color};
+      font-size: ${currentTheme.typography.subhead.size};
+    }
+
+    p,
+    span {
+      color: ${currentTheme.typography.body.color};
+      font-size: ${currentTheme.typography.body.size};
+    }
+  `;
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

@@ -32,14 +32,15 @@ const PageLayout = props => {
       site {
         siteMetadata {
           title
+          headline
         }
       }
     }
   `);
-
+  console.log(data.site.siteMetadata);
   return (
     <ThemeProvider>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteMetadata={data.site.siteMetadata} />
       <div css={style}>
         <main>{children}</main>
         <footer>&copy; {new Date().getFullYear()} Ben Junya</footer>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../ThemeProvider';
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteMetadata }) => {
   const { currentTheme } = useContext(ThemeContext);
 
   const style = css`
@@ -19,7 +19,12 @@ const Header = ({ siteTitle }) => {
     }
 
     h1 {
+      font-size: ${currentTheme.typography.header.size};
       margin: 0;
+    }
+
+    h2 {
+      font-size: ${currentTheme.typography.subhead.size};
     }
 
     .link {
@@ -31,18 +36,22 @@ const Header = ({ siteTitle }) => {
   return (
     <header css={style}>
       <div className="header-content">
-        <h1 style={{ margin: 0 }}>
+        <h1>
           <Link className="link" to="/">
-            {siteTitle}
+            {siteMetadata.title}
           </Link>
         </h1>
+        <h2>{siteMetadata.headline}</h2>
       </div>
     </header>
   );
 };
 
 Header.propTypes = {
-  siteTitle: PropTypes.string
+  siteMetadata: PropTypes.shape({
+    title: PropTypes.string,
+    headline: PropTypes.string
+  }).isRequired
 };
 
 Header.defaultProps = {
